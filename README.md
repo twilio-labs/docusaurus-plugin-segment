@@ -18,10 +18,11 @@ yarn add @twilio-labs/docusaurus-plugin-segment
 
 Accepted fields:
 
-| Name           | Type      | Default      | Description                                                              |
-| -------------- | --------- | ------------ | ------------------------------------------------------------------------ |
-| `writeKey`     | `string`  | **Required** | The Write Key for your Segment JavaScript source.                        |
-| `allowedInDev` | `boolean` | `false`      | Whether to allow tracking in development mode in addition to production. |
+| Name               | Type      | Default      | Description                                                              |
+| ------------------ | --------- | ------------ | ------------------------------------------------------------------------ |
+| `writeKey`         | `string`  | **Required** | The Write Key for your Segment JavaScript source.                        |
+| `trackLocalSearch` | `boolean` | `false`      | Whether to track searches made with docusaurus-search-local              |
+| `allowedInDev`     | `boolean` | `false`      | Whether to allow tracking in development mode in addition to production. |
 
 To find your write key:
 
