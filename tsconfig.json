@@ -46,5 +46,5 @@
     "outDir": "lib"
   },
   "include": ["src"],
-  "exclude": ["src/segment.ts"]
+  "exclude": ["src/segment.ts", "src/track-search.ts"]
 }

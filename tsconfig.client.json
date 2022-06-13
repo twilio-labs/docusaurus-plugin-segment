@@ -44,5 +44,5 @@
     "rootDir": "src",
     "outDir": "lib"
   },
-  "include": ["src/segment.ts"]
+  "include": ["src/segment.ts", "src/track-search.ts"]
 }

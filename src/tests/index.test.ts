@@ -40,6 +40,28 @@ describe("docusaurus-plugin-segment", () => {
     ).toEqual(["./segment"]);
   });
 
+  test("getClientModules returns the segment and track-search client scripts", () => {
+    process.env.NODE_ENV = "production";
+    const result = plugin({} as unknown as LoadContext, {
+      ...fakeOptions,
+      trackLocalSearch: true,
+    });
+    expect(
+      result.getClientModules ? result.getClientModules() : undefined
+    ).toEqual(["./segment", "./track-search"]);
+  });
+
+  test("getClientModules returns the segment client script in dev, if allowed", () => {
+    process.env.NODE_ENV = "dev";
+    const result = plugin({} as unknown as LoadContext, {
+      ...fakeOptions,
+      allowedInDev: true,
+    });
+    expect(
+      result.getClientModules ? result.getClientModules() : undefined
+    ).toEqual(["./segment"]);
+  });
+
   test("injectHtmlTags returns an empty object if not prod", () => {
     process.env.NODE_ENV = "dev";
     const result = plugin({} as unknown as LoadContext, fakeOptions);
@@ -63,6 +85,23 @@ describe("docusaurus-plugin-segment", () => {
   test("injectHtmlTags injects the writeKey correctly", () => {
     process.env.NODE_ENV = "production";
     const result = plugin({} as unknown as LoadContext, fakeOptions);
+    const headTags: HtmlTags | undefined = result.injectHtmlTags
+      ? result.injectHtmlTags({ content: null })?.headTags
+      : undefined;
+
+    expect(
+      (headTags as HtmlTagObject[])?.[0]?.innerHTML?.includes(
+        `analytics.load("${fakeOptions.writeKey}");`
+      )
+    ).toBeTruthy();
+  });
+
+  test("injectHtmlTags injects the writeKey correctly in dev, if allowed", () => {
+    process.env.NODE_ENV = "production";
+    const result = plugin({} as unknown as LoadContext, {
+      ...fakeOptions,
+      allowedInDev: true,
+    });
     const headTags: HtmlTags | undefined = result.injectHtmlTags
       ? result.injectHtmlTags({ content: null })?.headTags
       : undefined;

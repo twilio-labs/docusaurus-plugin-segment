@@ -8,16 +8,19 @@ import type { PluginOptions, Options } from "./options";
 
 export default function pluginSegment(
   context: LoadContext,
-  options: PluginOptions
+  { writeKey, allowedInDev, trackLocalSearch }: PluginOptions
 ): Plugin {
-  const { writeKey } = options;
-  const isProd = process.env.NODE_ENV === "production";
+  const isProd = process.env.NODE_ENV === "production" || allowedInDev;
 
   return {
     name: "docusaurus-plugin-segment",
 
     getClientModules() {
-      return isProd && writeKey ? ["./segment"] : [];
+      const clientModules = ["./segment"];
+      if (trackLocalSearch) {
+        clientModules.push("./track-search");
+      }
+      return isProd && writeKey ? clientModules : [];
     },
 
     injectHtmlTags() {
@@ -48,6 +51,8 @@ export default function pluginSegment(
 
 const pluginOptionsSchema = Joi.object<PluginOptions>({
   writeKey: Joi.string().required(),
+  trackLocalSearch: Joi.boolean().default(false),
+  allowedInDev: Joi.boolean().default(false),
 });
 
 export function validateOptions({

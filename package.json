@@ -1,5 +1,5 @@
 {
-  "name": "@docusaurus/plugin-segment",
+  "name": "@twilio-labs/docusaurus-plugin-segment",
   "version": "0.1.0",
   "description": "Segment plugin for Docusaurus.",
   "main": "lib/index.js",
