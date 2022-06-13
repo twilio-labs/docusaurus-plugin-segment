@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: 16
       - run: yarn run ci
-      - run: yarn run build
       - run: yarn test
 
   publish-npm:

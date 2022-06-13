@@ -1,6 +1,6 @@
 {
   "name": "@twilio-labs/docusaurus-plugin-segment",
-  "version": "0.1.0",
+  "version": "0.1.0-pre1",
   "description": "Segment plugin for Docusaurus.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,7 +10,11 @@
   "scripts": {
     "build": "tsc --build",
     "watch": "tsc --build --watch",
-    "test": "jest"
+    "test": "jest",
+    "prepack": "rimraf lib && yarn run build && rimraf lib/src/tests",
+    "preci": "rm -rf node_modules",
+    "ci": "yarn install --frozen-lockfile",
+    "prepare": "husky install"
   },
   "repository": "https://github.com/twilio-labs/docusaurus-plugin-segment",
   "license": "MIT",
@@ -24,6 +28,7 @@
     "@docusaurus/types": "2.0.0-beta.21",
     "@types/jest": "^28.1.1",
     "@types/segment-analytics": "^0.0.34",
+    "husky": "^8.0.1",
     "jest": "^28.1.1",
     "ts-jest": "^28.0.4",
     "typescript": "^4.7.3"
