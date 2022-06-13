@@ -23,6 +23,7 @@
   "devDependencies": {
     "@docusaurus/types": "2.0.0-beta.21",
     "@types/jest": "^28.1.1",
+    "@types/segment-analytics": "^0.0.34",
     "jest": "^28.1.1",
     "ts-jest": "^28.0.4",
     "typescript": "^4.7.3"

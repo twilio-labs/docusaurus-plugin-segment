@@ -44,16 +44,5 @@
     "rootDir": "src",
     "outDir": "lib"
   },
-  "include": ["src/segment.ts", "src/*.d.ts"],
-  "exclude": [
-    "**/__tests__/**",
-    "node_modules",
-    "coverage/**",
-    "**/lib/**/*",
-    "website/**",
-    "**/__mocks__/**/*",
-    "**/__fixtures__/**/*",
-    "examples/**",
-    "packages/create-docusaurus/templates/**"
-  ]
+  "include": ["src/segment.ts"]
 }
