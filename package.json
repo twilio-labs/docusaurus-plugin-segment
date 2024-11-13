@@ -19,7 +19,7 @@
   "repository": "https://github.com/twilio-labs/docusaurus-plugin-segment",
   "license": "MIT",
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.21",
+    "@docusaurus/core": "3.0.0",
     "@docusaurus/types": "2.0.0-beta.21",
     "@docusaurus/utils-validation": "2.0.0-beta.21",
     "tslib": "^2.4.0"
